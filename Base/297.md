@@ -7,7 +7,7 @@ Tags: #type_unfinished_anki
 
 ---
 ### Zero-Links
-- [[00 詩]]
+- [[00 詩 poetry]]
 ---
 ### Links
 -
