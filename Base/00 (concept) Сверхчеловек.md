@@ -1,0 +1,2 @@
+- [[00 (book) Also sprach Zarathustra]]
+- [[00 (person) Friedrich Nietzsche]]

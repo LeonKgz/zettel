@@ -1,0 +1,1 @@
+[[00 (religion) Буддизм (Buddhism)]]

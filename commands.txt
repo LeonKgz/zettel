@@ -1,0 +1,9 @@
+systemctl restart zettel
+systemctl status zettel
+sudo systemctl restart zettel.service
+sudo systemctl daemon-reload
+
+vim /etc/systemd/system/zettel.service
+
+ps -fA | grep python
+kill -9 pid
