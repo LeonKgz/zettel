@@ -25,5 +25,10 @@ def hello():
 
   return ret
 
+@app.route("/")
+def home():
+    return "<h1>Nginx & Gunicorn & Albanec69</h1>"
+
 if __name__ == "__main__":
-  app.run(host='127.0.0.1', port=5000)
+  #app.run(host='127.0.0.9',port=4455)
+  app.run()
