@@ -10,7 +10,7 @@ What the emperor is condemning here is an eagerness to meet death without real j
 ---
 ### Zero-Links
 - [[00 (religion) Христианство (Christianity)]]
-- [[00 (person) Марк Аврелий (Marcus Aurelius)]]
+- [[00 (person) Марк Аврелий - Marcus Aurelius]]
 - [[11.3. Soul ready for its release]]
 - [[Синтез ценностей господ и рабов]]
 ---

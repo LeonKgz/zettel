@@ -1,3 +1,0 @@
-- [[000 book]]
-- [[00 (person) Марк Аврелий (Marcus Aurelius)]]
-- [[00 (philosophy) Stoicism]]
