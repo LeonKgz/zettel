@@ -7,8 +7,17 @@ import re
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
+@app.route('/remedies')
+def remedies():
+  ret = {'remedies': []}
+  for f in os.listdir("./Base/"):
+    if ("00 (remedy)" in f):
+      remedy = f[12:-3]
+      ret["remedies"].append(remedy)
+  return ret    
+
 @app.route('/remedy')
-def hello():
+def remedy():
   ret = {'files': []}
   issue = request.args.get('issue')
   for f in os.listdir("./Base/"):
@@ -40,4 +49,4 @@ def home():
 
 if __name__ == "__main__":
   app.run()
-  #app.run(host='127.0.0.1',port=5044)
+  #app.run(host='127.0.0.1',port=5045)
