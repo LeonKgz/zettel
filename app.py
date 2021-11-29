@@ -1,10 +1,13 @@
-from flask import Flask
+from flask import Flask,send_from_directory
 from flask import request
+from flask import jsonify
 
 import os
 import re
 import pymysql.cursors
 from dotenv import load_dotenv
+import base64
+import random
 
 load_dotenv()
 
@@ -38,43 +41,84 @@ def score():
 
     string = "\n".join([f"<tr> <th>{i + 1}</th> <th>{name}</th> <th>{confession}</th> <th>{points}</th> </tr>" for i, (name, points, confession) in enumerate(entries)])
     ret = f"""<html lang='ru'>
-								<style>
-									th, td {{
-										border:1px solid grey;
-										font-size: 150%;
+                <style>
+                  th, td {{
+                    border:1px solid grey;
+                    font-size: 150%;
                     font-weight: normal;
-									}}
+                  }}
 
-									table {{
-										margin: 40px 0px 0px 0px;
-									}}
+                  li {{
+                    font-weight: normal;
+                    font-size:100%;
+                    text-align: left;
+                  }}
 
-									body, title {{
-										background-color: #282a36;
-										font-size: 150%;
-										color: #f8f8f2;
-										color: #f2f2f2;
-										font-family: Source Sans Pro;
+                  table {{
+                    margin: 40px 0px 0px 0px;
+                  }}
+
+                  body, title {{
+                    background-color: #282a36;
+                    font-size: 150%;
+                    color: #f8f8f2;
+                    color: #f2f2f2;
+                    font-family: Source Sans Pro;
                     display: block;
-										font-weight: bold;
-									}}                 
-  
-								</style>
+                    font-weight: bold;
+                  }}                
 
-								<body>
-									<center>
+                  .column {{
+                    height: 100%;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0px 50px 0px 50px;
+                  }}
+
+                  .row {{
+                    width: 100%;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    margin: 0px;
+                  }}
+
+                </style>
+
+                <body>
+                  <center>
                   <title>Социальный Рейтинг ТМГ</title>
-										<table>
-											<tr> 
-												<th> # </th> <th> Name </th> <th> Description </th> <th> Social Credit </th> 
-											</tr> 
+                    
+                    <div class=\"row\">
+                      <div class=\"column\">
+                        <table>
+                          <tr> 
+                            <th> # </th> <th> Name </th> <th> Description </th> <th> Social Credit </th> 
+                          </tr> 
 
-											{string}
+                          {string}
 
-										</table>
-									</center>
-								</body>
-							</html>"""
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class=\"row\">
+                      <div class=\"column\">
+                        <h4>Источник</h4>
+                        <ul>
+                          <li> Описание — 0 ~ 10 </li>
+                          <li> Актёр Запаса — 5 </li>
+                          <li> Участие в пьесе — 10 </li>
+                          <li> Донос — 0 ~ 5 </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                      
+                  </center>
+                </body>
+              </html>"""
 
   except Exception as e:
     ret = f"<h1>Ошибка подключения к базе данных! => {e} <=</h1>" 
@@ -83,6 +127,66 @@ def score():
   db.close()
   
   return ret
+
+@app.route('/duty/')
+def image():
+  #issue = request.args.get('issue')
+  ret = {'author': "", 'title': "", 'data': ""}
+  issue = request.args.get('issue')
+  candidates = []
+  for f in os.listdir("./Base/"):
+    #print(str(f))
+    try:
+      with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
+        contents = str(fil.read())
+
+        if (issue == "Random"):
+          link = f"[[00 (duty)"
+        else:
+          link = f"[[00 (duty) {issue}]]"
+          
+        if (link in contents):
+          candidates.append((f, contents)) 
+        fil.close()
+    except OSError as err:
+      print(f"deck FAILED")
+  
+  fil, contents = candidates[random.randint(0, len(candidates) - 1)]
+
+  title = re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0].split(" - ")[0]
+  book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
+
+  with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
+    author = str(bkfil.read())
+    try:
+      author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
+    except Exception as e:
+      author = "None"
+
+    bkfil.close()
+
+    content = contents.split("\n---\n")[1][2:].split("\n\n")[1].split("\n")[0][3:-2]
+
+  try:
+    response = send_from_directory("./Files", content, as_attachment=True) 
+    response.direct_passthrough = False
+    data = response.get_data(as_text=False)
+    data = base64.b64encode(data).decode('ascii')
+  except FileNotFoundError:
+    abort(404)
+  
+  ret = {'author': author, 'title': title, 'number': fil.split(".")[0], 'data': data}
+  return ret
+
+
+@app.route('/duties')
+def duties():
+  ret = {'duties': []}
+  for f in os.listdir("./Base/"):
+    if ("00 (duty)" in f):
+      remedy = f[10:-3]
+      ret["duties"].append(remedy)
+  return ret    
 
 @app.route('/remedies')
 def remedies():
@@ -102,14 +206,23 @@ def remedy():
     try:
       with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
         contents = str(fil.read())
-        link = f"[[00 (remedy) {issue}]]"
+
+        if (issue == "Random"):
+          link = f"[[00 (remedy)"
+        else:
+          link = f"[[00 (remedy) {issue}]]"
+          
         if (link in contents):
           title = re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0].split(" - ")[0]
           book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
 
           with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
             author = str(bkfil.read())
-            author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
+            try:
+              author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
+            except Exception as e:
+              author = "None"
+
             bkfil.close()
 
           ret['files'].append({'author': author, 'title': title, 'content': contents.split("\n---\n")[1][2:]})
@@ -125,5 +238,5 @@ def home():
     return "<h1>Reload Check 324</h1>"
 
 if __name__ == "__main__":
-  app.run()
+  app.run(threaded = True, debug = True)
   #app.run(host='127.0.0.1',port=5045)
