@@ -128,11 +128,89 @@ def score():
   
   return ret
 
+def parse_files(keyword, issue):
+  # For now files are raw bytes carrying image data
+  # content should contain marks in text where to place files (![[filename]])
+  ret = {'author': "", 'title': "", 'content': "", 'number': "", 'files': []}
+  
+  candidates = []
+
+  for f in os.listdir("./Base/"):
+    try:
+      with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
+        contents = str(fil.read())
+
+        if (issue == "Random"):
+          link = f"[[00 ({keyword})"
+        else:
+          link = f"[[00 ({keyword}) {issue}]]"
+          
+        if (link in contents):
+          candidates.append((f, contents)) 
+        fil.close()
+    except OSError as err:
+      print(f"deck FAILED")
+  
+  try:
+    fil, contents = candidates[random.randint(0, len(candidates) - 1)]
+  except Exception as e:
+    print(e)
+    return ret
+
+  # TODO is it possible for files to point not to a book?
+  # Getting the name in russian (russian - english)
+  title = re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0].split(" - ")[0]
+  book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
+
+  with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
+    author = str(bkfil.read())
+    try:
+      author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
+    except Exception as e:
+      author = "None"
+
+    bkfil.close()
+
+    #content = contents.split("\n---\n")[1][2:].split("\n\n")[1].split("\n")[0][3:-2]
+
+    content = contents.split("\n---\n")[1][2:].split("\n\n")[1:]
+    content = "\n\n".join(content)
+    files = re.findall('!\[\[(.*?)\]\]', content)
+
+    ret['author'] = author
+    ret['title'] = title
+    ret['number'] = fil.split(".")[0]
+    
+    if (len(files) > 0):
+      ret["content"] = content
+       
+      # Now check for   
+      for f in files:
+        try:
+          response = send_from_directory("./Files", f, as_attachment=True) 
+          response.direct_passthrough = False
+          data = response.get_data(as_text=False)
+          data = base64.b64encode(data).decode('ascii')
+          ret['files'].append(data)
+        except FileNotFoundError:
+          abort(404)
+
+      return ret
+ 
+    else:
+
+      ret['content'] = contents.split("\n---\n")[1][2:]
+      return ret
+
 @app.route('/duty/')
 def image():
   #issue = request.args.get('issue')
   ret = {'author': "", 'title': "", 'data': ""}
   issue = request.args.get('issue')
+
+
+  return parse_files("duty", issue)
+
   candidates = []
   for f in os.listdir("./Base/"):
     #print(str(f))
@@ -175,7 +253,7 @@ def image():
   except FileNotFoundError:
     abort(404)
   
-  ret = {'author': author, 'title': title, 'number': fil.split(".")[0], 'data': data}
+  ret = {'saved': saved, 'author': author, 'title': title, 'number': fil.split(".")[0], 'data': data}
   return ret
 
 
@@ -201,6 +279,9 @@ def remedies():
 def remedy():
   ret = {'files': []}
   issue = request.args.get('issue')
+
+  return parse_files("remedy", issue)
+
   for f in os.listdir("./Base/"):
     #print(str(f))
     try:
