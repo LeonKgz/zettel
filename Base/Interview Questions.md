@@ -17,3 +17,24 @@ Calculate the revenue difference between a combination of two regions versus one
 
 ### What sort of role are you looking for 
 I have had experience working on web apps both in fornt and backend so generally I am looking for a fullstack type of job as well. 
+
+### Cover Letter
+
+Dear Sir/Madam!
+
+I am a Comuting gradute from the Imperial College London. 
+
+
+### 
+ - Introduction
+	I am a recent Graduate 
+
+- What sort of jobs you are looking for
+    Experience: Python and Java would be my strongest kanguages as of yet. I have decent experience 
+	working with HTML/CSS and Javascript as well.
+
+ - Eventually sponsor a # Skilled Worker visa
+
+
+
+
