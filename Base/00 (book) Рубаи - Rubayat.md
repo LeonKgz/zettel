@@ -1,0 +1,1 @@
+ - [[00 (person) Омар Хаям - Omar Khayaam]]
