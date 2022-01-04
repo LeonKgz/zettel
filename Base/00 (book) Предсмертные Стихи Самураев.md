@@ -1,1 +1,1 @@
-- [[00 (person) Ольга Чигиринская - Olga Chigirinskaya]]
+- author [[00 (person) Ольга Чигиринская - Olga Chigirinskaya]]

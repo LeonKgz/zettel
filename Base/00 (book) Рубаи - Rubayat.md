@@ -1,1 +1,2 @@
- - [[00 (person) Омар Хаям - Omar Khayaam]]
+ - author [[00 (person) Омар Хаям - Omar Khayaam]]
+ - interpreter [[00 (person) Борис Плисецкий - Boris Plisetsky]]
