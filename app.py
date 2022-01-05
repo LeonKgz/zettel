@@ -131,7 +131,7 @@ def score():
 def parse_files(keyword, issue):
   # For now files are raw bytes carrying image data
   # content should contain marks in text where to place files (![[filename]])
-  ret = {'author': "", 'title': "", 'content': "", 'number': "", 'files': []}
+  ret = {'author': "", 'interpreter': "", 'title': "", 'content': "", 'number': "", 'files': []}
   
   candidates = []
 
@@ -163,11 +163,16 @@ def parse_files(keyword, issue):
   book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
 
   with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
-    author = str(bkfil.read())
+    sample = str(bkfil.read())
     try:
-      author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
+      author = re.findall('author \[\[00 \(person\) (.*?)\]\]', sample)[0].split(" - ")[0]
     except Exception as e:
-      author = "None"
+      author = ""
+
+    try:
+      interpreter = re.findall('interpreter \[\[00 \(person\) (.*?)\]\]', sample)[0].split(" - ")[0]
+    except Exception as e:
+      interpreter = ""
 
     bkfil.close()
 
@@ -178,6 +183,7 @@ def parse_files(keyword, issue):
     files = re.findall('!\[\[(.*?)\]\]', content)
 
     ret['author'] = author
+    ret['interpreter'] = interpreter
     ret['title'] = title
     ret['number'] = fil.split(".")[0]
     
