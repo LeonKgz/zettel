@@ -1,2 +1,2 @@
 - interpreter [[00 (person) Бронислав Виногродский - Bronislav Vinogrodsky]]
-- [[00 (person) Кофуций - Confucius]]
+- [[00 (person) Конфуций - Confucius]]
