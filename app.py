@@ -131,7 +131,7 @@ def score():
 def parse_files(keyword, issue):
   # For now files are raw bytes carrying image data
   # content should contain marks in text where to place files (![[filename]])
-  ret = {'author': "", 'interpreter': "", 'title': "", 'content': "", 'number': "", 'files': []}
+  ret = {'author': "", 'interpreter': "", 'title': "", 'content': "", 'number': "", 'files': [], 'links': []}
   
   candidates = []
 
@@ -181,12 +181,25 @@ def parse_files(keyword, issue):
 
   except Exception as e:
     title = str(fil).split(".md")[0]
-    author = ""
-    interpreter = ""
+
+    try:
+      author = re.findall('author \[\[00 \(person\) (.*?)\]\]', contents)[0].split(" - ")[0]
+    except Exception as e:
+      author = ""
+
+    try:
+      interpreter = re.findall('interpreter \[\[00 \(person\) (.*?)\]\]', contents)[0].split(" - ")[0]
+    except Exception as e:
+      interpreter = ""
 
     #content = contents.split("\n---\n")[1][2:].split("\n\n")[1].split("\n")[0][3:-2]
 
   content = contents.split("\n---\n")[1][2:].split("\n\n")[1:]
+  links_area = contents.split("\n---\n")[3]
+
+  ret['links'] = [s.strip() for s in links_area.split("\n- ")[1:]]
+
+
   content = "\n\n".join(content)
   files = re.findall('!\[\[(.*?)\]\]', content)
 
