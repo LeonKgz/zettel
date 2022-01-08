@@ -137,3 +137,21 @@
  
 # --------------------------------------------------------
 
+Что можно купить за шаныраки (Приобрести роли позволяющие создавть каналы, или... создать канал за поинты (пока в определённой категории))
+За пользование ботом доступно по 2 
+
+You can redeem points for poetry/duty/remedy once a day for each so 3 points max
+Get points for being active on the server: both social credit and shanirak. 
+
+Now is the time for proper Досье. с описанием кредитами и шаныраками.
+
+
+You can add cards to the zettel database for points
+You can edit keywords maybe
+You can buy the DJ role for a day and get in the queue basically
+You can buy a front row seat during the next play. Buy ticket for the next play that gives you the role. 
+I will set the start and the end of current play season, so people can view which play is currently being prepared, who is going to play so far and buy tickets for that basically. 
+Also get notifications as Зрители. When a special command is hit all viewers will have a prefix so they appear at the bottom of the voice channel. 
+
+
+Документ всех команд для бота уже
