@@ -131,7 +131,7 @@ def score():
 def parse_files(keyword, issue):
   # For now files are raw bytes carrying image data
   # content should contain marks in text where to place files (![[filename]])
-  ret = {'author': "", 'title': "", 'content': "", 'number': "", 'files': []}
+  ret = {'author': "", 'interpreter': "", 'title': "", 'content': "", 'number': "", 'files': []}
   
   candidates = []
 
@@ -159,48 +159,82 @@ def parse_files(keyword, issue):
 
   # TODO is it possible for files to point not to a book?
   # Getting the name in russian (russian - english)
-  title = re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0].split(" - ")[0]
-  book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
 
-  with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
-    author = str(bkfil.read())
-    try:
-      author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
-    except Exception as e:
-      author = "None"
+  try:
 
-    bkfil.close()
+    title = re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0].split(" - ")[0]
+    book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
+
+    with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
+      sample = str(bkfil.read())
+      try:
+        author = re.findall('author \[\[00 \(person\) (.*?)\]\]', sample)[0].split(" - ")[0]
+      except Exception as e:
+        author = ""
+
+      try:
+        interpreter = re.findall('interpreter \[\[00 \(person\) (.*?)\]\]', sample)[0].split(" - ")[0]
+      except Exception as e:
+        interpreter = ""
+
+      bkfil.close()
+
+  except Exception as e:
+    title = str(fil).split(".md")[0]
+    author = ""
+    interpreter = ""
 
     #content = contents.split("\n---\n")[1][2:].split("\n\n")[1].split("\n")[0][3:-2]
 
-    content = contents.split("\n---\n")[1][2:].split("\n\n")[1:]
-    content = "\n\n".join(content)
-    files = re.findall('!\[\[(.*?)\]\]', content)
+  content = contents.split("\n---\n")[1][2:].split("\n\n")[1:]
+  content = "\n\n".join(content)
+  files = re.findall('!\[\[(.*?)\]\]', content)
 
-    ret['author'] = author
-    ret['title'] = title
-    ret['number'] = fil.split(".")[0]
-    
-    if (len(files) > 0):
-      ret["content"] = content
-       
-      # Now check for   
-      for f in files:
-        try:
-          response = send_from_directory("./Files", f, as_attachment=True) 
-          response.direct_passthrough = False
-          data = response.get_data(as_text=False)
-          data = base64.b64encode(data).decode('ascii')
-          ret['files'].append(data)
-        except FileNotFoundError:
-          abort(404)
+  ret['author'] = author
+  ret['interpreter'] = interpreter
+  ret['title'] = title
+  ret['number'] = fil.split(".")[0]
+  
+  if (len(files) > 0):
+    ret["content"] = content
+     
+    # Now check for   
+    for f in files:
+      try:
+        response = send_from_directory("./Files", f, as_attachment=True) 
+        response.direct_passthrough = False
+        data = response.get_data(as_text=False)
+        data = base64.b64encode(data).decode('ascii')
+        ret['files'].append(data)
+      except FileNotFoundError:
+        abort(404)
 
-      return ret
- 
-    else:
+    return ret
 
-      ret['content'] = contents.split("\n---\n")[1][2:]
-      return ret
+  else:
+
+    ret['content'] = contents.split("\n---\n")[1][2:]
+    return ret
+
+@app.route('/poem/')
+def poem():
+  #issue = request.args.get('issue')
+  ret = {'author': "", 'title': "", 'data': ""}
+  issue = request.args.get('issue')
+
+  return parse_files("poetry", issue)
+
+@app.route('/poems')
+def poems():
+  ret = {'poems': []}
+  for f in os.listdir("./Base/"):
+    if ("00 (poetry)" in f):
+      remedy = f[12:-3]
+      ret["poems"].append(remedy)
+  return ret    
+
+
+
 
 @app.route('/duty/')
 def image():
