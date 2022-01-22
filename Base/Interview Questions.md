@@ -133,3 +133,23 @@ Models of Computation, Networks and Communications, Compilers, Computational Tec
 # lease tell us why you want to work for Mott MacDonald (4000 character limit):
 
 Ultimately I want to work on interesting projects that can help make peoples lives easier and have a global impact. With the scale of outreach and global involvement of Mott MacDonald I believe it is possible.
+
+
+# Why Work at Amadeus
+I am excited to join an inclusive multinational environment that I am used to, throughout my time in United Kingdom in Sherborne Internation College, Cardiff Sixth Form College and Imperial College London.
+
+I was born in Kyrghyzstan, grew up in Russia and was accustomed to travel since the young age, thanks to my parents. They took me to a multitude of countries and I have been in close contact with the travel industry for as long as I can remember myself.
+
+Developing complex systems, working with newest technoilogies and have a real time impact on travel industry.
+
+A flexible work-life balance, potentially remote work opportunitiy?
+
+Dynamic Company? Don't want to get stuck in a routine 
+It's important for me to work in a dynamic environment that doesn't allow me to spiral into a routine. 
+
+I think one of the responsibilities that I would be willing to  take on is to encourage more people to explore rural areas  in their own counries and around the globe, support local businesses and thus favour more market competition regardless of the industry, be it catering, hotels/inns, schooling, farming, or even tech. 
+
+I am willing to develop my leadership and managerial skills as I do have the will but lack real experience and mentorship. I did attempt to somewhat undertake a role of Scrum Master during a university third year group project.
+
+
+
