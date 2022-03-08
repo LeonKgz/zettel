@@ -110,7 +110,7 @@ def score():
                           <li> Описание — 0 ~ 10 </li>
                           <li> Актёр Запаса — 5 </li>
                           <li> Участие в пьесе — 10 </li>
-                          <li> Донос — 0 ~ 5 </li>
+                          <li> Недельная активность на сервере — 1 </li>
                         </ul>
                       </div>
                     </div>
@@ -231,7 +231,6 @@ def parse_files(keyword, issue):
 
 @app.route('/poem/')
 def poem():
-  #issue = request.args.get('issue')
   ret = {'author': "", 'title': "", 'data': ""}
   issue = request.args.get('issue')
 
@@ -246,63 +245,12 @@ def poems():
       ret["poems"].append(remedy)
   return ret    
 
-
-
-
 @app.route('/duty/')
 def image():
   #issue = request.args.get('issue')
   ret = {'author': "", 'title': "", 'data': ""}
   issue = request.args.get('issue')
-
-
   return parse_files("duty", issue)
-
-  candidates = []
-  for f in os.listdir("./Base/"):
-    #print(str(f))
-    try:
-      with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
-        contents = str(fil.read())
-
-        if (issue == "Random"):
-          link = f"[[00 (duty)"
-        else:
-          link = f"[[00 (duty) {issue}]]"
-          
-        if (link in contents):
-          candidates.append((f, contents)) 
-        fil.close()
-    except OSError as err:
-      print(f"deck FAILED")
-  
-  fil, contents = candidates[random.randint(0, len(candidates) - 1)]
-
-  title = re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0].split(" - ")[0]
-  book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
-
-  with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
-    author = str(bkfil.read())
-    try:
-      author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
-    except Exception as e:
-      author = "None"
-
-    bkfil.close()
-
-    content = contents.split("\n---\n")[1][2:].split("\n\n")[1].split("\n")[0][3:-2]
-
-  try:
-    response = send_from_directory("./Files", content, as_attachment=True) 
-    response.direct_passthrough = False
-    data = response.get_data(as_text=False)
-    data = base64.b64encode(data).decode('ascii')
-  except FileNotFoundError:
-    abort(404)
-  
-  ret = {'saved': saved, 'author': author, 'title': title, 'number': fil.split(".")[0], 'data': data}
-  return ret
-
 
 @app.route('/duties')
 def duties():
@@ -326,40 +274,7 @@ def remedies():
 def remedy():
   ret = {'files': []}
   issue = request.args.get('issue')
-
   return parse_files("remedy", issue)
-
-  for f in os.listdir("./Base/"):
-    #print(str(f))
-    try:
-      with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
-        contents = str(fil.read())
-
-        if (issue == "Random"):
-          link = f"[[00 (remedy)"
-        else:
-          link = f"[[00 (remedy) {issue}]]"
-          
-        if (link in contents):
-          title = re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0].split(" - ")[0]
-          book_file = "00 (book) " + re.findall('\[\[00 \(book\) (.*?)\]\]', contents)[0] + ".md"
-
-          with open(f"./Base/{book_file}", 'r', encoding='utf-8') as bkfil:
-            author = str(bkfil.read())
-            try:
-              author = re.findall('\[\[00 \(person\) (.*?)\]\]', author)[0].split(" - ")[0]
-            except Exception as e:
-              author = "None"
-
-            bkfil.close()
-
-          ret['files'].append({'author': author, 'title': title, 'content': contents.split("\n---\n")[1][2:]})
-
-        fil.close()
-    except OSError as err:
-      print(f"deck FAILED")
-
-  return ret
 
 @app.route("/")
 def home():
@@ -367,4 +282,3 @@ def home():
 
 if __name__ == "__main__":
   app.run(threaded = True, debug = True)
-  #app.run(host='127.0.0.1',port=5045)
