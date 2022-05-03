@@ -8,6 +8,9 @@ import pymysql.cursors
 from dotenv import load_dotenv
 import base64
 import random
+import requests
+
+import gh_md_to_html
 
 load_dotenv()
 
@@ -27,6 +30,81 @@ def get_db_cursor():
                        charset='utf8mb4',
                        cursorclass=pymysql.cursors.DictCursor)
   return db, db.cursor()
+
+# another page for entering the file name so that the y dont have to tinker with the url
+
+import re
+
+def markdown_to_html_via_github_api(markdown):
+
+  # """Converts markdown to html, using the github api and nothing else."""
+  headers = {"Content-Type": "text/plain", "charset": "utf-8"}
+  ret = str(requests.post("https://api.github.com/markdown/raw", headers=headers, data=markdown.encode("utf-8")).content, encoding="utf-8")
+
+  # ret = markdown
+
+  ret = re.sub(r'\[\[(.*?)\]\]', r'<a href="view?file=\1.md">[[\1]]</a>', ret)
+
+  # with open("./logs.txt", 'w') as f:
+  #   f.write(ret)
+
+  # ret = re.sub(r'\[\[([a-z]+)\]\]', r'\<a href=\"view?file=\1\"\>\1\<\/a\>', ret)
+  # ret = re.sub(r'Zero', r'Nol', ret)
+  return ret
+
+def convert_to_html(filename):
+
+  with open(f"./Base/{filename}", 'r', encoding='utf-8') as fil:
+    contents = str(fil.read())
+    # html_as_a_string = gh_md_to_html.core_converter.markdown(contents)
+  # html_as_a_string = gh_md_to_html.main(f"./Base/{filename}")
+    html_as_a_string = markdown_to_html_via_github_api(contents)
+    style = """ 
+      body {
+        color: black;
+      }"""
+
+    ret = f"""
+    <html lang='ru'>
+      <head>
+        <a href="/prompt">Go Back</a>
+      </head>
+      <body>
+        <style>{style}</style>
+        {html_as_a_string}
+      </body>
+    </html>
+    """
+    return ret
+
+@app.route('/prompt')
+def prompt():
+
+  files = "</li>\n<li>".join([f"<a href=\"view?file={f}\">{f}</a>" for f in os.listdir("./Base/") if ("00" not in f and "Туманов" not in f)])
+  script = """
+    function redirect() {
+      var filename=document.getElementById('test').value
+      window.location.href="/view?file=" + filename
+    }"""
+
+  ret = f"""
+  <html lang='ru'>
+  <script>{script}</script>
+  <input id="test" type=text><button onclick="redirect()">Submit</button>
+  <li>{files}</li>    
+  </html>"""
+
+  return ret
+
+@app.route('/view')
+def view():
+  file = str(request.args.get('file'))
+  # only accept full file name or a keyword that might be in multiple file names
+  # only open the ones on Base
+  if ("/" in file or ".." in file):
+    return "Nice try"
+
+  return convert_to_html(file)
 
 @app.route('/score')
 def score():
@@ -128,7 +206,7 @@ def score():
   
   return ret
 
-def parse_files(keyword, issue):
+def parse_files(keyword, issue, book=None):
   # For now files are raw bytes carrying image data
   # content should contain marks in text where to place files (![[filename]])
   ret = {'author': "", 'interpreter': "", 'title': "", 'content': "", 'number': "", 'files': [], 'links': []}
@@ -144,9 +222,11 @@ def parse_files(keyword, issue):
           link = f"[[00 ({keyword})"
         else:
           link = f"[[00 ({keyword}) {issue}]]"
-          
-        if (link in contents):
-          candidates.append((f, contents)) 
+
+        if book and f"[[00 (book) {book}" in contents and link in contents:
+            candidates.append((f, contents))
+        elif (not book and link in contents):
+            candidates.append((f, contents)) 
         fil.close()
     except OSError as err:
       print(f"deck FAILED")
@@ -233,7 +313,6 @@ def parse_files(keyword, issue):
 def poem():
   ret = {'author': "", 'title': "", 'data': ""}
   issue = request.args.get('issue')
-
   return parse_files("poetry", issue)
 
 @app.route('/poems')
@@ -275,6 +354,31 @@ def remedy():
   ret = {'files': []}
   issue = request.args.get('issue')
   return parse_files("remedy", issue)
+
+@app.route('/prayer')
+def prayer():
+  ret = {'verses': []}
+  seen = []
+
+  remedies = []
+  # issues = request.args.get('issue')
+  for f in os.listdir("./Base/"):
+    if ("00 (remedy)" in f):
+      remedy = f[12:-3]
+      if remedy == "Favourites" or remedy == "Test":
+        continue
+      remedies.append(remedy)
+  curr = None
+  for r in remedies:
+    while (not curr or check_string in seen):
+      curr = parse_files("remedy", r, "Наедине с собой")
+      check_string = curr["title"] + curr["title"] + curr["number"]
+
+    curr["remedy"] = r  
+    ret["verses"].append(curr)
+    seen.append(check_string)
+
+  return ret
 
 @app.route("/")
 def home():
