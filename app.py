@@ -206,7 +206,7 @@ def score():
   
   return ret
 
-def parse_files(keyword, issue, book=None):
+def parse_files(keyword, issue, book=None, discord=False):
   # For now files are raw bytes carrying image data
   # content should contain marks in text where to place files (![[filename]])
   ret = {'author': "", 'interpreter': "", 'title': "", 'content': "", 'number': "", 'files': [], 'links': []}
@@ -222,6 +222,9 @@ def parse_files(keyword, issue, book=None):
           link = f"[[00 ({keyword})"
         else:
           link = f"[[00 ({keyword}) {issue}]]"
+
+        if (discord and "[[00 (discord) Long]]" in contents):
+          continue
 
         if book and f"[[00 (book) {book}" in contents and link in contents:
             candidates.append((f, contents))
@@ -371,7 +374,7 @@ def prayer():
   curr = None
   for r in remedies:
     while (not curr or check_string in seen):
-      curr = parse_files("remedy", r, "Наедине с собой")
+      curr = parse_files("remedy", r, book="Наедине с собой", discord=True)
       check_string = curr["title"] + curr["title"] + curr["number"]
 
     curr["remedy"] = r  
