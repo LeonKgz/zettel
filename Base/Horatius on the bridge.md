@@ -1,13 +1,18 @@
 21202104302123
-Tags: #type_unfinished_anki 
+Tags: #type_finished_anki 
 ---
 # Horatius on the bridge
 
-And how can a man die better<br>Than facing fearful odds,<br>For the ashes of his fathers,<br>And the temples of his gods.
+Then out spoke brave Horatius, the Captain of the Gate: 
+"To every man upon this earth, death cometh soon or late; 
+And how can man die better than facing fearful odds, 
+For the ashes of his fathers, and the temples of his Gods,
 
 ---
 ### Zero-Links
 - [[00 詩 poetry]]
+- [[00 (poetry) Бог]]
+- [[00 (poetry) Смерть]]
 ---
 ### Links
 -

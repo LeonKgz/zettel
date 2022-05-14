@@ -1,0 +1,1 @@
+ - author [[00 (person) Виктор Гюго - Victor Hugo]]

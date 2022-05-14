@@ -1,0 +1,1 @@
+ - author [[00 person # Иоганн Вольфганг фон Гёте - Johann Wolfgang von Goethe]]
