@@ -289,7 +289,8 @@ def parse_files(keyword, issue, book=None, discord=False):
   ret['author'] = author
   ret['interpreter'] = interpreter
   ret['title'] = title
-  ret['number'] = fil.split(".")[0]
+  if (len(fil.split(".md")[0].split(".")) > 1):
+    ret['number'] = fil.split(".md")[0].split(".")[0]
   
   if (len(files) > 0):
     ret["content"] = content
