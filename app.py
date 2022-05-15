@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 import base64
 import random
 import requests
+from cache import *
+import pickle
 
 import gh_md_to_html
 
@@ -213,32 +215,48 @@ def parse_files(keyword, issue, book=None, discord=False):
   
   candidates = []
 
-  for f in os.listdir("./Base/"):
-    try:
-      with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
-        contents = str(fil.read())
+  pickle_file = PICKLE_CACHE
+  with open(pickle_file, 'rb') as f:
+    cache = pickle.load(f)
 
-        if (issue == "Random"):
-          link = f"[[00 ({keyword})"
-        else:
-          link = f"[[00 ({keyword}) {issue}]]"
+  if issue == "Random":
+    for zl, files in cache.items():
+      if f" ({keyword})" in zl:
+        candidates += files
+  elif book:
+    candidates = [x for x in cache[f" (book) {book}"] if x in cache[f" ({keyword}) {issue}"]]
+  else:
+    candidates = cache[f" ({keyword}) {issue}"]
 
-        if (discord and "[[00 (discord) Long]]" in contents):
-          continue
+  # for f in os.listdir("./Base/"):
+  #   try:
+  #     with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
+  #       contents = str(fil.read())
 
-        if book and f"[[00 (book) {book}" in contents and link in contents:
-            candidates.append((f, contents))
-        elif (not book and link in contents):
-            candidates.append((f, contents)) 
-        fil.close()
-    except OSError as err:
-      print(f"deck FAILED")
+  #       if (issue == "Random"):
+  #         link = f"[[00 ({keyword})"
+  #       else:
+  #         link = f"[[00 ({keyword}) {issue}]]"
+
+  #       if (discord and "[[00 (discord) Long]]" in contents):
+  #         continue
+
+  #       if book and f"[[00 (book) {book}" in contents and link in contents:
+  #           candidates.append((f, contents))
+  #       elif (not book and link in contents):
+  #           candidates.append((f, contents)) 
+  #       fil.close()
+  #   except OSError as err:
+  #     print(f"deck FAILED")
   
-  try:
-    fil, contents = candidates[random.randint(0, len(candidates) - 1)]
-  except Exception as e:
-    print(e)
-    return ret
+  fil = candidates[random.randint(0, len(candidates) - 1)]
+  with open(f"./Base/{fil}", 'r', encoding='utf-8') as f:
+    contents = str(f.read())
+  # try:
+  #   fil, contents = candidates[random.randint(0, len(candidates) - 1)]
+  # except Exception as e:
+  #   print(e)
+  #   return ret
 
   # TODO is it possible for files to point not to a book?
   # Getting the name in russian (russian - english)
@@ -375,8 +393,9 @@ def prayer():
   curr = None
   for r in remedies:
     while (not curr or check_string in seen):
-      curr = parse_files("remedy", r, book="Наедине с собой", discord=True)
+      curr = parse_files("remedy", r, book="Наедине с собой - Meditations", discord=True)
       check_string = curr["title"] + curr["title"] + curr["number"]
+      print(check_string)
 
     curr["remedy"] = r  
     ret["verses"].append(curr)
