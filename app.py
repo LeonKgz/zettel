@@ -221,12 +221,12 @@ def parse_files(keyword, issue, book=None, discord=False):
 
   if issue == "Random":
     for zl, files in cache.items():
-      if f" ({keyword})" in zl:
+      if f"({keyword})" in zl:
         candidates += files
   elif book:
-    candidates = [x for x in cache[f" (book) {book}"] if x in cache[f" ({keyword}) {issue}"]]
+    candidates = [x for x in cache[f"(book) {book}"] if x in cache[f"({keyword}) {issue}"]]
   else:
-    candidates = cache[f" ({keyword}) {issue}"]
+    candidates = cache[f"({keyword}) {issue}"]
 
   # for f in os.listdir("./Base/"):
   #   try:

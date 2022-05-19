@@ -14,13 +14,23 @@ def main():
   for f in os.listdir("./Base/"):
     with open(f"./Base/{f}", 'r', encoding='utf-8') as fil:
       contents = str(fil.read())
-      zero_links = re.findall('\[\[00(.*?)\]\]', contents)
+      zero_links = re.findall('\[\[00 (.*?)\]\]', contents)
       if zero_links:
         for zl in zero_links:
-          if zl in cache:
-            cache[zl].append(f"{f}")
-          else:
-            cache[zl] = [f"{f}"]
+          
+          final_zls = [zl]      
+          if " - " and ") " in zl:  
+            first = zl.split(") ")[0] + ") "
+            seconds = zl.split(") ")[1].split(" - ")
+            final_zls = [first + s for s in seconds]
+            if "remedy" in zl:
+              print(final_zls)
+
+          for fzl in final_zls:
+            if fzl in cache:
+              cache[fzl].append(f"{f}")
+            else:
+              cache[fzl] = [f"{f}"]
   
   pickle_file = PICKLE_CACHE
   with open(pickle_file, 'wb') as f:
