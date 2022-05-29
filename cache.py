@@ -22,9 +22,9 @@ def main():
           if " - " and ") " in zl:  
             first = zl.split(") ")[0] + ") "
             seconds = zl.split(") ")[1].split(" - ")
-            final_zls = [first + s for s in seconds]
-            if "remedy" in zl:
-              print(final_zls)
+            final_zls += [first + s for s in seconds]
+            # if "Death" in zl:
+            #   print(final_zls)
 
           for fzl in final_zls:
             if fzl in cache:

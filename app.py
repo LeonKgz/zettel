@@ -219,14 +219,18 @@ def parse_files(keyword, issue, book=None, discord=False):
   with open(pickle_file, 'rb') as f:
     cache = pickle.load(f)
 
-  if issue == "Random":
-    for zl, files in cache.items():
-      if f"({keyword})" in zl:
-        candidates += files
-  elif book:
-    candidates = [x for x in cache[f"(book) {book}"] if x in cache[f"({keyword}) {issue}"]]
-  else:
-    candidates = cache[f"({keyword}) {issue}"]
+  try:
+    if issue == "Random":
+      for zl, files in cache.items():
+        if f"({keyword})" in zl:
+          candidates += files
+    elif book:
+      candidates = [x for x in cache[f"(book) {book}"] if x in cache[f"({keyword}) {issue}"]]
+    else:
+      candidates = cache[f"({keyword}) {issue}"]
+
+  except Exception as e:
+    return ret
 
   # for f in os.listdir("./Base/"):
   #   try:
@@ -364,11 +368,16 @@ def duties():
 
 @app.route('/remedies')
 def remedies():
-  ret = {'remedies': []}
+  ret = {'remedies': {"ru": [], "en": []}}
   for f in os.listdir("./Base/"):
     if ("00 (remedy)" in f):
-      remedy = f[12:-3]
-      ret["remedies"].append(remedy)
+      versions = f.split("00 (remedy)")[1].split(".md")[0].split(" - ")
+      ru = versions[0].strip()
+      en = versions[1].strip()
+      # remedy = f[12:-3]
+      # ret["remedies"]["ru"].append(remedy)
+      ret["remedies"]["ru"].append(ru)
+      ret["remedies"]["en"].append(en)
   return ret    
 
 @app.route('/remedy')
@@ -386,16 +395,20 @@ def prayer():
   # issues = request.args.get('issue')
   for f in os.listdir("./Base/"):
     if ("00 (remedy)" in f):
-      remedy = f[12:-3]
+
+      # pick russian version since both are in cache
+      # remedy = f.split("00 (remedy)")[1].split(".md")[0].split(" - ")[0].strip()
+      remedy = f.split("00 (remedy)")[1].split(".md")[0].strip()
       if remedy == "Favourites" or remedy == "Test":
         continue
       remedies.append(remedy)
   curr = None
   for r in remedies:
     while (not curr or check_string in seen):
-      curr = parse_files("remedy", r, book="Наедине с собой - Meditations", discord=True)
+      rus = r.split(" - ")[0]
+      curr = parse_files("remedy", rus, book="Наедине с собой - Meditations", discord=True)
       check_string = curr["title"] + curr["title"] + curr["number"]
-      print(check_string)
+      print(r, check_string)
 
     curr["remedy"] = r  
     ret["verses"].append(curr)
