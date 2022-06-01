@@ -1,5 +1,5 @@
 {{date:YYYMMDD}}{{time:HHmm}}
-Tags: #poetry  
+Tags: #poem  
 ---
 #
 
