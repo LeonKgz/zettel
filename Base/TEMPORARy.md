@@ -228,10 +228,6 @@ MAYBE CLEAR OUT HELP MESSAGES FOR THE BOTS JESUS CHRIST
 
 00 詩 poetry #type_unfinished_anki
 
-change zero links into tags and instead, replace with single zero links [[00 (remedy) Death]] => [[00 Death]]) + #remedy_death
-
-DUDE its about time you fucking write tests, its not feasivle at all test everythin for the Somerset User dammit PLEEEASE
-
 Find away to translate channel names into turkic as well
 
 ---
