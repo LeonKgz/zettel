@@ -1,5 +1,5 @@
 21202104251757
-Tags: #type_finished  #web
+Tags: #type_finished #web
 ---
 # Persectution of christians by Marcus Aurelius
 

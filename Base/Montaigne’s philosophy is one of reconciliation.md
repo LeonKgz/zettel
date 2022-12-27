@@ -1,5 +1,5 @@
 21202104302123
-Tags: #type_unfinished_anki 
+Tags: #type_unfinished_anki
 ---
 # Montaigne’s philosophy is one of reconciliation
 

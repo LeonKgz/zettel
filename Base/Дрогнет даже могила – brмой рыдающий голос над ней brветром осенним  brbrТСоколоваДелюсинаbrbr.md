@@ -1,5 +1,5 @@
 21202104302123
-Tags: #type_unfinished_anki 
+Tags: #type_unfinished_anki
 ---
 # Дрогнет даже могила – brмой рыдающий голос над ней brветром осенним  brbrТСоколоваДелюсинаbrbr
 

@@ -1,5 +1,5 @@
 21202107050201
-Tags: #wiki #type_finished 
+Tags: #wiki #type_finished
 ---
 # Lucius Tarquinius Superbus
 
@@ -7,7 +7,7 @@ Lucius Tarquinius Superbus (died 495 BC) was the legendary seventh and final kin
 
 ---
 ### Zero-Links
-- 
+-
 ---
 ### Links
 - https://en.wikipedia.org/wiki/Lucius_Tarquinius_Superbus

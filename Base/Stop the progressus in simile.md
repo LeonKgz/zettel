@@ -1,5 +1,5 @@
 21202104300128
-Tags: #type_unfinished_anki 
+Tags: #type_unfinished_anki
 ---
 # Stop the progressus in simile
 

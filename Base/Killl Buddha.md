@@ -1,5 +1,5 @@
 21202112131925
-Tags: #parable 
+Tags: #parable
 ---
 # Killl Buddha
 

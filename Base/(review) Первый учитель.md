@@ -1,5 +1,5 @@
 21202108261752
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # (review) Первый учитель
 

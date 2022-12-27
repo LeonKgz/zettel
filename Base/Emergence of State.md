@@ -1,5 +1,5 @@
 21202104210047
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Emergence of State
 

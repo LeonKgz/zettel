@@ -1,5 +1,5 @@
 21202104010301
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Society and State dichotomy
 

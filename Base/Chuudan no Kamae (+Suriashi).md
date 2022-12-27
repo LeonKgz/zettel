@@ -1,5 +1,5 @@
 21202112051810
-Tags: #exercise #type_finished  
+Tags: #exercise #type_finished
 ---
 # Chuudan no Kamae (+Suriashi)
 

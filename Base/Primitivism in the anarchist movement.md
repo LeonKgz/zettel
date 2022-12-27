@@ -1,5 +1,5 @@
 21202104202355
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Primitivism in the anarchist movement
 

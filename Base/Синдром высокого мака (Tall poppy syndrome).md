@@ -1,5 +1,5 @@
 21202107050151
-Tags: #wiki #type_finished  
+Tags: #wiki #type_finished
 ---
 # Синдром высокого мака (Tall poppy syndrome)
 

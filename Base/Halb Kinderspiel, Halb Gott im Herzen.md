@@ -1,5 +1,5 @@
 21202104302123
-Tags: #type_finished_anki 
+Tags: #type_finished_anki #poetry_бог
 ---
 # Halb Kinderspiel, Halb Gott im Herzen
 
@@ -12,7 +12,6 @@ Tags: #type_finished_anki
 ### Zero-Links
 - [[00 詩 poetry]]
 - author [[00 person Иоганн Вольфганг фон Гёте - Johann Wolfgang von Goethe]]
-- [[00 (poetry) Бог]]
 ---
 ### Links
 -

@@ -1,5 +1,5 @@
 21202109281730
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Тополёк мой в красной косынке
 

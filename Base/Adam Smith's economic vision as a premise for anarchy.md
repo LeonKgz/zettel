@@ -1,5 +1,5 @@
 21202104210019
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Adam Smith's economic vision as a premise for anarchy
 

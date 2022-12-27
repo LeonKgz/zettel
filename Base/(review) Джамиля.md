@@ -1,5 +1,5 @@
 21202109281820
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Джамиля
 

@@ -1,5 +1,5 @@
 21202108040025
-Tags: #type_finished  #exercise 
+Tags: #type_finished #exercise
 ---
 # Kakari-keiko
 

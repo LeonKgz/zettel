@@ -1,5 +1,5 @@
 21202104302123
-Tags: #type_unfinished_anki 
+Tags: #type_unfinished_anki
 ---
 # Выпал первый снег – brтяжестью к земле пригнув brслабенький нарциссbrbrДСмирнов
 

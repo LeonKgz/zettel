@@ -1,5 +1,5 @@
 21202112051759
-Tags: #exercise  #type_finished #revelation 
+Tags: #exercise #type_finished #revelation
 ---
 # Kote-Men strike
 

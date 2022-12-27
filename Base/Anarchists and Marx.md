@@ -1,5 +1,5 @@
 21202107130113
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Anarchists and Marx
 

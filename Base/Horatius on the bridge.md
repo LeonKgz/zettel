@@ -1,5 +1,5 @@
 21202104302123
-Tags: #type_finished_anki 
+Tags: #type_finished_anki #poetry_бог #poetry_смерть
 ---
 # Horatius on the bridge
 
@@ -11,8 +11,6 @@ For the ashes of his fathers, and the temples of his Gods,
 ---
 ### Zero-Links
 - [[00 詩 poetry]]
-- [[00 (poetry) Бог]]
-- [[00 (poetry) Смерть]]
 ---
 ### Links
 -

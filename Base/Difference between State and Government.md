@@ -1,5 +1,5 @@
 21202104210037
-Tags: #type_finished #book_snippet  
+Tags: #type_finished #book_snippet
 ---
 # Difference between State and Government
 
