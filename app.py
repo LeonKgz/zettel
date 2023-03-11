@@ -1,4 +1,4 @@
-from flask import Flask,send_from_directory
+from flask import Flask,send_from_directory, send_file
 from flask import request
 from flask import jsonify
 
@@ -24,6 +24,19 @@ DB = str(os.getenv('DB_DATABASE'))
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
+def save_pickle(dictionary, filename):
+  outfile = open(filename, 'wb')
+  pickle.dump(dictionary, outfile)
+  outfile.close()
+
+def load_pickle(filename):
+  dictionary = {}
+  if os.path.exists(filename):
+    infile = open(filename,'rb')
+    dictionary = pickle.load(infile)      
+    infile.close()
+  return dictionary
+
 def get_db_cursor():
   db = pymysql.connect(host=HOST,
                        user=USER,
@@ -44,8 +57,10 @@ def markdown_to_html_via_github_api(markdown):
   ret = str(requests.post("https://api.github.com/markdown/raw", headers=headers, data=markdown.encode("utf-8")).content, encoding="utf-8")
 
   # ret = markdown
+  
 
   ret = re.sub(r'\[\[(.*?)\]\]', r'<a href="view?file=\1.md">[[\1]]</a>', ret)
+  ret = ret.replace(".jpg.md", ".jpg")
 
   # with open("./logs.txt", 'w') as f:
   #   f.write(ret)
@@ -54,9 +69,19 @@ def markdown_to_html_via_github_api(markdown):
   # ret = re.sub(r'Zero', r'Nol', ret)
   return ret
 
+from flask import send_file
 def convert_to_html(filename):
+  
+  folder = "Base"
 
-  with open(f"./Base/{filename}", 'r', encoding='utf-8') as fil:
+  if ".jpg" in filename:
+    folder = "Files"
+    return send_file(f"./{folder}/{filename}", mimetype="image/gif")
+    with open(f"./{folder}/{filename}", 'r', encoding='utf-8') as fil:
+      contents = str(fil.read())
+      return contents
+  
+  with open(f"./{folder}/{filename}", 'r', encoding='utf-8') as fil:
     contents = str(fil.read())
     # html_as_a_string = gh_md_to_html.core_converter.markdown(contents)
   # html_as_a_string = gh_md_to_html.main(f"./Base/{filename}")
@@ -79,6 +104,20 @@ def convert_to_html(filename):
     """
     return ret
 
+from flask import send_file
+
+@app.route('/waifu_file')
+def get_waifu_file():
+    ws = os.listdir("./waifus/")
+    ret = random.choice(ws)
+    return {"file": ret}
+
+@app.route('/waifu_jpg')
+def get_waifu_image():
+    filename = 'waifu.jpg'
+    filename = "./waifus/" + str(request.args.get('file'))
+    return send_file(filename, mimetype='image/gif')
+
 @app.route('/prompt')
 def prompt():
 
@@ -97,6 +136,15 @@ def prompt():
   </html>"""
 
   return ret
+
+@app.route('/flag')
+def flag():
+  code = str(request.args.get('code'))
+  flags = load_pickle("flags.pkl")
+  if code in flags:
+    return {"url": flags[code]}
+  else:
+    return {"url": flags["random"]}
 
 @app.route('/view')
 def view():
@@ -187,10 +235,12 @@ def score():
                       <div class=\"column\">
                         <h4>Источник</h4>
                         <ul>
+                          <li> Недельная активность на сервере — 1 </li>
                           <li> Описание — 0 ~ 10 </li>
                           <li> Актёр Запаса — 5 </li>
                           <li> Участие в пьесе — 10 </li>
-                          <li> Недельная активность на сервере — 1 </li>
+                          <li> Участие в репетиции — 1 ~ 5 </li>
+                          <li> Подключение телеграма — 5 </li>
                         </ul>
                       </div>
                     </div>
@@ -218,7 +268,7 @@ def parse_files(keyword, issue, book=None, discord=False):
   pickle_file = PICKLE_CACHE
   with open(pickle_file, 'rb') as f:
     cache = pickle.load(f)
-
+  # return {f"({keyword}) {issue}": cache}
   try:
     if issue == "Random":
       for zl, files in cache.items():
@@ -344,11 +394,17 @@ def poem():
 @app.route('/poems')
 def poems():
   ret = {'poems': []}
-  for f in os.listdir("./Base/"):
-    if ("00 (poetry)" in f):
-      remedy = f[12:-3]
-      ret["poems"].append(remedy)
+
+  pickle_file = PICKLE_CACHE
+  with open(pickle_file, 'rb') as f:
+    cache = pickle.load(f)
+  ret["poems"] = cache["poems"]
+
   return ret    
+  # for f in os.listdir("./Base/"):
+  #   if ("00 (poetry)" in f):
+  #     remedy = f[12:-3]
+  #     ret["poems"].append(remedy)
 
 @app.route('/duty/')
 def image():
@@ -360,25 +416,48 @@ def image():
 @app.route('/duties')
 def duties():
   ret = {'duties': []}
-  for f in os.listdir("./Base/"):
-    if ("00 (duty)" in f):
-      remedy = f[10:-3]
-      ret["duties"].append(remedy)
-  return ret    
+
+  pickle_file = PICKLE_CACHE
+  with open(pickle_file, 'rb') as f:
+    cache = pickle.load(f)
+  ret["duties"] = cache["duties"]
+
+  return ret
+  # for f in os.listdir("./Base/"):
+  #   if ("00 (duty)" in f):
+  #     remedy = f[10:-3]
+  #     ret["duties"].append(remedy)
+  # return ret    
 
 @app.route('/remedies')
 def remedies():
   ret = {'remedies': {"ru": [], "en": []}}
-  for f in os.listdir("./Base/"):
-    if ("00 (remedy)" in f):
-      versions = f.split("00 (remedy)")[1].split(".md")[0].split(" - ")
-      ru = versions[0].strip()
-      en = versions[1].strip()
-      # remedy = f[12:-3]
-      # ret["remedies"]["ru"].append(remedy)
-      ret["remedies"]["ru"].append(ru)
-      ret["remedies"]["en"].append(en)
+
+  pickle_file = PICKLE_CACHE
+  with open(pickle_file, 'rb') as f:
+    cache = pickle.load(f)
+  
+  pairs = [r.split("_") for r in cache["remedies"]]
+  for p in pairs:
+    if len(p) == 1:
+      # ret['remedies']['ru'].append(p[0])
+      ret['remedies']['en'].append(p[0])
+    else:
+      ret['remedies']['ru'].append(p[0])
+      ret['remedies']['en'].append(p[1])
+
   return ret    
+
+  # for f in os.listdir("./Base/"):
+  #   if ("00 (remedy)" in f):
+  #     versions = f.split("00 (remedy)")[1].split(".md")[0].split(" - ")
+  #     ru = versions[0].strip()
+  #     en = versions[1].strip()
+  #     # remedy = f[12:-3]
+  #     # ret["remedies"]["ru"].append(remedy)
+  #     ret["remedies"]["ru"].append(ru)
+  #     ret["remedies"]["en"].append(en)
+  # return ret    
 
 @app.route('/remedy')
 def remedy():
@@ -420,5 +499,11 @@ def prayer():
 def home():
     return "<h1>Reload Check 324</h1>"
 
-if __name__ == "__main__":
-  app.run(threaded = True, debug = True)
+
+pickle_file = PICKLE_CACHE
+with open(pickle_file, 'rb') as f:
+  cache = pickle.load(f)
+  print("Work" in cache)
+
+#if __name__ == "__main__":
+#  app.run(threaded = True, debug = True)
