@@ -1,0 +1,2 @@
+- [[00 (religion) Христианство (Christianity)]]
+- [[00 (religion) Иудейство (Judaism)]]
