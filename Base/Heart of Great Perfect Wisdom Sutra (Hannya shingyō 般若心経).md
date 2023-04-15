@@ -3,7 +3,7 @@ Tags: #chant #type_finished #translation
 ---
 # Heart of Great Perfect Wisdom Sutra 
 # Hannya shingyō 般若心経
-The Great Heart of Wisdom Sutra 
+The Great Heart of Wisdom Sutra
 Avalokiteshvara Bodhisattva while practicing deep Prajna Paramita
 Perceived all five skandhas were empty and was saved from suffering and distress
 Shariputra, form is no different from emptiness
@@ -45,47 +45,47 @@ gone,gone, gone beyond
 gone all the way beyond, Bodhi Svaha! 
 heart sutra
 
-摩訶般波羅蜜多心経					ma-ka-han-nya-ha-ra-mi-ta-shin-gyou 
+摩訶般波羅蜜多心経					ma-ka-han-nya-ha-ra-mi-ta-shin-gyou
 観自在菩薩行深般波羅蜜多時 	  kan-ji-zai-bo-satsu-gyou-jin-han-nya-ha-ra-mita-ji  
-照見五薀皆空度一切苦厄			   shou-ken-go-on-kai-kuu-do-is-sai-ku-yaku  
-舍利子色不異空 						 sha-ri-shi-shiki-fu-i-kuu  
-空不異色 									 kuu-fu-i-shiki  
-色即是空 									 shiki-soku-ze-kuu  
-空即是色 									 kuu-soku-ze-shiki  
-受想行識 亦復如是 					   juu-sou-gyou-shiki-yaku-bu-nyo-ze  
-舍利子是諸法空相 					   sha-ri-shi-ze-sho-hou-kuu-sou  
-不生不滅 									 fu-shou-fu-metsu 
-不垢不浄									 fu-ku-fu-jou  
-不増不減 									 fu-zou-fu-gen  
-是故空中無色 								ze-ko-kuu-chuu-mu-shiki 
-無受想行識                                  mu-juu-sou-gyou-shiki 
-無眼耳鼻舌身意                           mu-gen-ni-bi-zes-shin-i 
-無色声香味触法                           mu-shiki-shou-kou-mi-soku-hou 
-無限界乃至無意識界                    mu-gen-kai-nai-shi-mu-i-shiki-kai  
-無無明亦無無明尽                       mu-mu-myou-yaku-mu-mu-myou-jin 
-乃至無老死亦無老死尽                nai-shi-mu-rou-shi-yaku-mu-rou-shi-jin 
-無苦集滅道                                  mu-ku-shuu-metsu-dou 
-無智亦無得                                  mu-chi-yaku-mu-toku 
-以無所得故                                  i-mu-sho-tok-ko 
-菩提薩埵依般若波羅蜜多故         bo-dai-sat-ta-e-han-nya-ha-ra-mi-ta-ko 
-心無罣礙                                     shin-mu-ke-ge and (his)
-無罣礙故無有恐怖                       mu-ke-ge-ko-mu-u-ku-fu
-遠離一切顛倒無想                       on-ri-is-sai-ten-dou-mu-sou
-究竟涅槃                                     ku-kyou-ne-han 
-三世諸仏                                     san-ze-shou-butsu 
-依般若波羅蜜多故                       e-han-nya-ha-ra-mi-ta-ko
-得阿耨多羅三藐三菩提                toku-a-noku-ta-ra-san-myaku-san-bo-dai
-故知般若波羅蜜多                       ko-chi-han-nya-ha-ra-mi-ta 
-是大神呪                                     ze-dai-jin-shu
-是大明呪                                     ze-dai-myou-shu
-是無上呪                                     ze-mu-jou-shu
-是無等等呪                                  ze-mu-tou-dou-shu
-能除一切苦真実不嘘                   nou-jo-is-sai-ku-shin-jitsu-fu-ko 
-故説般若波羅蜜多呪                   ko-setsu-han-nya-ha-ra-mi-ta-shu 
-即説呪曰                                     soku-setsu-shu-watsu
-揭諦揭諦波羅揭諦                       gya-te-gya-te-ha-ra-gya-te
-波羅僧揭諦菩提薩婆訶                ha-ra-sou-gya-te-bo-ji-so-wa-ka
-般波心経                                     han-nya-shin-gyou 
+照見五薀皆空度一切苦厄			   shou-ken-go-on-kai-kuu-do-is-sai-ku-yaku   
+舍利子色不異空 						 sha-ri-shi-shiki-fu-i-kuu   
+空不異色 									 kuu-fu-i-shiki    
+色即是空 									 shiki-soku-ze-kuu    
+空即是色 									 kuu-soku-ze-shiki    
+受想行識 亦復如是 					   juu-sou-gyou-shiki-yaku-bu-nyo-ze    
+舍利子是諸法空相 					   sha-ri-shi-ze-sho-hou-kuu-sou    
+不生不滅 									 fu-shou-fu-metsu    
+不垢不浄									 fu-ku-fu-jou    
+不増不減 									 fu-zou-fu-gen    
+是故空中無色 								ze-ko-kuu-chuu-mu-shiki    
+無受想行識                                  mu-juu-sou-gyou-shiki    
+無眼耳鼻舌身意                           mu-gen-ni-bi-zes-shin-i    
+無色声香味触法                           mu-shiki-shou-kou-mi-soku-hou    
+無限界乃至無意識界                    mu-gen-kai-nai-shi-mu-i-shiki-kai    
+無無明亦無無明尽                       mu-mu-myou-yaku-mu-mu-myou-jin    
+乃至無老死亦無老死尽                nai-shi-mu-rou-shi-yaku-mu-rou-shi-jin    
+無苦集滅道                                  mu-ku-shuu-metsu-dou    
+無智亦無得                                  mu-chi-yaku-mu-toku    
+以無所得故                                  i-mu-sho-tok-ko    
+菩提薩埵依般若波羅蜜多故         bo-dai-sat-ta-e-han-nya-ha-ra-mi-ta-ko    
+心無罣礙                                     shin-mu-ke-ge and (his)    
+無罣礙故無有恐怖                       mu-ke-ge-ko-mu-u-ku-fu    
+遠離一切顛倒無想                       on-ri-is-sai-ten-dou-mu-sou    
+究竟涅槃                                     ku-kyou-ne-han    
+三世諸仏                                     san-ze-shou-butsu    
+依般若波羅蜜多故                       e-han-nya-ha-ra-mi-ta-ko    
+得阿耨多羅三藐三菩提                toku-a-noku-ta-ra-san-myaku-san-bo-dai    
+故知般若波羅蜜多                       ko-chi-han-nya-ha-ra-mi-ta    
+是大神呪                                     ze-dai-jin-shu    
+是大明呪                                     ze-dai-myou-shu    
+是無上呪                                     ze-mu-jou-shu    
+是無等等呪                                  ze-mu-tou-dou-shu    
+能除一切苦真実不嘘                   nou-jo-is-sai-ku-shin-jitsu-fu-ko    
+故説般若波羅蜜多呪                   ko-setsu-han-nya-ha-ra-mi-ta-shu    
+即説呪曰                                     soku-setsu-shu-watsu    
+揭諦揭諦波羅揭諦                       gya-te-gya-te-ha-ra-gya-te    
+波羅僧揭諦菩提薩婆訶                ha-ra-sou-gya-te-bo-ji-so-wa-ka    
+般波心経                                     han-nya-shin-gyou    
 
 ---
 
