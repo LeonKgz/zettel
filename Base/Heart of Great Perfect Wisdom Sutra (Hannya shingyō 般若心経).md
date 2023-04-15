@@ -3,49 +3,49 @@ Tags: #chant #type_finished #translation
 ---
 # Heart of Great Perfect Wisdom Sutra 
 # Hannya shingyō 般若心経
-The Great Heart of Wisdom Sutra
-Avalokiteshvara Bodhisattva while practicing deep Prajna Paramita
-Perceived all five skandhas were empty and was saved from suffering and distress
-Shariputra, form is no different from emptiness
-Emptiness is no different from form
-That which is form is emptiness
-That which is emptiness is form
-Feelings, perceptions, impulses, consciousness, the same is true of these
-Shariputra, all dharmas are marked with emptiness
-(They) do not appear or disappear
-are not tainted or pure
-do not increase or decrease
-Therefore in emptiness no form,
-no feelings, perceptions, impulses, consciousness 
-no eyes, ears, nose, tongue, body, mind 
-no color, sound, smell, taste, touch, object of mind 
-no realm of eyes and so forth until no realm of mind consciousness
-no ignorance and also no extinction of ignorance 
-and so forth until no old age and death and no extinction of old age and death 
-no suffering, origination, stopping, path
-no cognition also no attainment 
-with nothing to attain 
-the Bodhisattva depends upon Prajna Paramita
-mind is no hindrance 
-without any hindrance no fear exists 
-far apart from every inverted view 
-(he) dwells in Nirvana
-All Buddhas in the Three Worlds
-depend on Prajna Paramita 
-and attain complete unsurpassed enlightenment
-Therefore know the Prajna Paramita
-is the great transcendent mantra 
-is the great bright mantra 
-is the utmost mantra 
-is the supreme mantra 
-which is able to relieve all suffering and is true, not false 
-so proclaim the Prajna Paramita mantra 
-proclaim the mantra that says
-gone,gone, gone beyond 
-gone all the way beyond, Bodhi Svaha! 
+The Great Heart of Wisdom Sutra    
+Avalokiteshvara Bodhisattva while practicing deep Prajna Paramita    
+Perceived all five skandhas were empty and was saved from suffering and distress    
+Shariputra, form is no different from emptiness    
+Emptiness is no different from form    
+That which is form is emptiness    
+That which is emptiness is form    
+Feelings, perceptions, impulses, consciousness, the same is true of these    
+Shariputra, all dharmas are marked with emptiness    
+(They) do not appear or disappear    
+are not tainted or pure    
+do not increase or decrease    
+Therefore in emptiness no form,    
+no feelings, perceptions, impulses, consciousness     
+no eyes, ears, nose, tongue, body, mind     
+no color, sound, smell, taste, touch, object of mind     
+no realm of eyes and so forth until no realm of mind consciousness    
+no ignorance and also no extinction of ignorance     
+and so forth until no old age and death and no extinction of old age and death     
+no suffering, origination, stopping, path    
+no cognition also no attainment     
+with nothing to attain     
+the Bodhisattva depends upon Prajna Paramita    
+mind is no hindrance     
+without any hindrance no fear exists     
+far apart from every inverted view     
+(he) dwells in Nirvana    
+All Buddhas in the Three Worlds    
+depend on Prajna Paramita     
+and attain complete unsurpassed enlightenment    
+Therefore know the Prajna Paramita    
+is the great transcendent mantra     
+is the great bright mantra     
+is the utmost mantra     
+is the supreme mantra     
+which is able to relieve all suffering and is true, not false     
+so proclaim the Prajna Paramita mantra     
+proclaim the mantra that says    
+gone,gone, gone beyond     
+gone all the way beyond, Bodhi Svaha!     
 heart sutra
 
-摩訶般波羅蜜多心経					ma-ka-han-nya-ha-ra-mi-ta-shin-gyou
+摩訶般波羅蜜多心経					ma-ka-han-nya-ha-ra-mi-ta-shin-gyou    
 観自在菩薩行深般波羅蜜多時 	  kan-ji-zai-bo-satsu-gyou-jin-han-nya-ha-ra-mita-ji  
 照見五薀皆空度一切苦厄			   shou-ken-go-on-kai-kuu-do-is-sai-ku-yaku   
 舍利子色不異空 						 sha-ri-shi-shiki-fu-i-kuu   
