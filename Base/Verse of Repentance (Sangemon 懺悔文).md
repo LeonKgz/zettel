@@ -44,6 +44,7 @@ and manifested through body, speech, and mind.
 ---
 ### Zero-Links
 - [[00 (religion) Буддизм (Buddhism)]]
+- [[00 (person) Будда (Buddha)]]
 ---
 ### Links
 - https://www.sotozen.com/eng/library/glossary/individual.html?key=verse_of_repentance

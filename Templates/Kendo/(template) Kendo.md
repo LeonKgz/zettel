@@ -1,12 +1,6 @@
 {{date:YYYMMDD}}{{time:HHmm}}
-Tags: #exercise #type_finished  
+Tags: #exercise   
 ---
-# Mindset
-# Form
- ## Zanshin
-
-# Rei
-# Roots
 
 ---
 ### Zero-Links
