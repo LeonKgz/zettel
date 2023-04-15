@@ -14,15 +14,15 @@ I have taken refuge in buddha.
 I have taken refuge in dharma.  
 I have taken refuge in sangha.  
 
-南無歸依佛           namu kie butsu 
-南無歸依法           namu kie ho 
-南無歸依僧           namu kie so 
-歸依佛無上尊       kie butsu mujō son 
-歸依法離塵尊       kie ho rijin son 
-歸依僧和合尊       kie so wagō son 
-歸依佛竟              kie buk-kyō 
-歸依法竟              kie ho kyo 
-歸依僧竟              kie so kyo 
+南無歸依佛           namu kie butsu    
+南無歸依法           namu kie ho    
+南無歸依僧           namu kie so    
+歸依佛無上尊       kie butsu mujō son    
+歸依法離塵尊       kie ho rijin son    
+歸依僧和合尊       kie so wagō son    
+歸依佛竟              kie buk-kyō    
+歸依法竟              kie ho kyo    
+歸依僧竟              kie so kyo    
 
 ---
 

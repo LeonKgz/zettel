@@ -9,10 +9,10 @@ all the evil actions I have perpetrated in the past,
 arising from beginningless greed, anger, and delusion,  
 and manifested through body, speech, and mind.  
 
-我昔所造諸惡業		gashaku shozō shoaku go
-皆由無始貪瞋癡		kai yu mushi ton jinchi
-從身口意之所生		ju shin kui shisho sho
-一切我今皆懺悔		is-sai gakon kai sange
+我昔所造諸惡業		gashaku shozō shoaku go   
+皆由無始貪瞋癡		kai yu mushi ton jinchi   
+從身口意之所生		ju shin kui shisho sho   
+一切我今皆懺悔		is-sai gakon kai sange   
 
 ## Meanings
 1. 我昔所造諸惡業 - gashaku shozō shoaku go - "All the evil actions I perpetrated in the past"
